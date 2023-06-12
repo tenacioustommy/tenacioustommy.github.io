@@ -4,34 +4,31 @@ on:
   push:
     branches:
       - main # default branch
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+
 jobs:
   pages:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: "18"
       - name: Cache NPM dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.OS }}-npm-cache
           restore-keys: |
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
-        run: npm install hexo-cli -g
         run: npm install
       - name: Build
-        run: hexo generate
+        run: npm run build
       - name: Deploy
-      - uses: actions/upload-pages-artifact@v1.0.7
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
-          path: public/
-        uses: actions/deploy-pages@v1.2.4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
