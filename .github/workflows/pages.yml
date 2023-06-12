@@ -3,9 +3,11 @@ name: Pages
 on:
   push:
     branches:
-      - master # default branch
-  
-
+      - main # default branch
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   pages:
     runs-on: ubuntu-latest
@@ -23,11 +25,13 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
+        run: npm install hexo-cli -g
         run: npm install
       - name: Build
-        run: npm run build
+        run: hexo generate
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - uses: actions/upload-pages-artifact@v1.0.7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          path: public/
+        uses: actions/deploy-pages@v1.2.4
