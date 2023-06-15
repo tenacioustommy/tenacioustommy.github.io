@@ -4,4 +4,3 @@ deploy:
   type: git
   repository: git@github.com:tenacioustommy/tenacioustommy.github.io.git
   branch: main
-# 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
