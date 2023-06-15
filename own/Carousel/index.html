@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="轮播图点击切换            * {         box-sizing: border-box;       }        .slider {         width: 560px;         height: 400px;         overflow: hidden;       }        .slider-wr">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/own/Carousel/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="轮播图点击切换            * {         box-sizing: border-box;       }        .slider {         width: 560px;         height: 400px;         overflow: hidden;       }        .slider-wr">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/own/Carousel/img/1.jpg">
+<meta property="article:published_time" content="2023-06-15T02:15:44.016Z">
+<meta property="article:modified_time" content="2023-06-15T02:15:44.016Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/own/Carousel/img/1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/own/Carousel/index.html" class="article-date">
+  <time class="dt-published" datetime="2023-06-15T02:15:44.016Z" itemprop="datePublished">2023-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播图点击切换</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .slider {
+        width: 560px;
+        height: 400px;
+        overflow: hidden;
+      }
+
+      .slider-wrapper {
+        width: 100%;
+        height: 320px;
+      }
+
+      .slider-wrapper img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .slider-footer {
+        height: 80px;
+        background-color: rgb(100, 67, 68);
+        padding: 12px 12px 0 12px;
+        position: relative;
+      }
+
+      .slider-footer .toggle {
+        position: absolute;
+        right: 0;
+        top: 12px;
+        display: flex;
+      }
+
+      .slider-footer .toggle button {
+        margin-right: 12px;
+        width: 28px;
+        height: 28px;
+        appearance: none;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .slider-footer .toggle button:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .slider-footer p {
+        margin: 0;
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .slider-indicator {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .slider-indicator li {
+        width: 8px;
+        height: 8px;
+        margin: 4px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: 0.4;
+        cursor: pointer;
+      }
+
+      .slider-indicator li.active {
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slider">
+      <div class="slider-wrapper">
+        <img src="./img/1.jpg" alt="" />
+      </div>
+      <div class="slider-footer">
+        <p>对人类来说会不会太超前了？</p>
+        <ul class="slider-indicator">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <div class="toggle">
+          <button class="prev">&lt;</button>
+          <button class="next">&gt;</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 1. 初始数据
+      const sliderData = [
+        {
+          url: "./img/1.jpg",
+          title: "对人类来说会不会太超前了？",
+          color: "rgb(100, 67, 68)",
+        },
+        {
+          url: "./img/2.jpg",
+          title: "开启剑与雪的黑暗传说！",
+          color: "rgb(43, 35, 26)",
+        },
+        {
+          url: "./img/3.jpg",
+          title: "真正的jo厨出现了！",
+          color: "rgb(36, 31, 33)",
+        },
+        // { url: './img/4.jpg', title: '李玉刚：让世界通过B站看到东方大国文化', color: 'rgb(139, 98, 66)' },
+        // { url: './img/5.jpg', title: '快来分享你的寒假日常吧~', color: 'rgb(67, 90, 92)' },
+        // { url: './img/6.jpg', title: '哔哩哔哩小年YEAH', color: 'rgb(166, 131, 143)' },
+        // { url: './img/7.jpg', title: '一站式解决你的电脑配置问题！！！', color: 'rgb(53, 29, 25)' },
+        // { url: './img/8.jpg', title: '谁不想和小猫咪贴贴呢！', color: 'rgb(99, 72, 114)' },
+      ];
+      function getrandom(N, M) {
+        return Math.floor(Math.random() * (M - N)) + N;
+      }
+      const img = document.querySelector(".slider-wrapper img");
+      const p = document.querySelector(".slider-footer p");
+      const footer = document.querySelector(".slider-footer");
+      const next = document.querySelector(".next");
+      const prev = document.querySelector(".prev");
+      let i = 0;
+      next.addEventListener("click", () => {
+        i = (i + 1) % 3;
+        img.src = sliderData[i].url;
+        p.innerHTML = sliderData[i].title;
+        footer.style.backgroundColor = sliderData[i].color;
+        document.querySelector(".slider-indicator .active").classList.remove("active");
+        const li = document.querySelector(`.slider-indicator li:nth-of-type(${i + 1})`);
+        li.classList.add("active");
+      });
+      prev.addEventListener("click", () => {
+        i = (i + 2) % 3;
+        img.src = sliderData[i].url;
+        p.innerHTML = sliderData[i].title;
+        footer.style.backgroundColor = sliderData[i].color;
+        document.querySelector(".slider-indicator .active").classList.remove("active");
+        const li = document.querySelector(`.slider-indicator li:nth-of-type(${i + 1})`);
+        li.classList.add("active");
+      });
+      let n = setInterval(() => {
+        next.click();
+      }, 1000);
+      const slider = document.querySelector(".slider");
+      slider.addEventListener("mouseenter", () => {
+        clearInterval(n);
+      });
+      slider.addEventListener("mouseleave", () => {
+        n = setInterval(() => {
+          next.click();
+        }, 1000);
+      });
+      const indicator = document.querySelector(".slider-indicator");
+      for (let i = 0; i < 3; i++) {
+        const li = document.querySelector(`.slider-indicator li:nth-of-type(${i + 1})`);
+        li.addEventListener("click", () => {
+          img.src = sliderData[i].url;
+          p.innerHTML = sliderData[i].title;
+          footer.style.backgroundColor = sliderData[i].color;
+          document.querySelector(".slider-indicator .active").classList.remove("active");
+          li.classList.add("active");
+        });
+      }
+    </script>
+  </body>
+</html>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/own/Carousel/index.html" data-id="cliwieero0000d1okf3z39n2y" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/06/12/My-New-Post/">My New Post</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
